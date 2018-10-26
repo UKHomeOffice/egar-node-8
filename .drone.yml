@@ -11,7 +11,7 @@ image_to_quay:
   when:
     branch:
       exclude: master
-    event: [ pull_request ]
+    event: [ push, pull_request ]
 
 image_to_quay:
   image: quay.io/ukhomeofficedigital/drone-docker
