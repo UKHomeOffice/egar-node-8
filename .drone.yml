@@ -1,0 +1,28 @@
+pipeline:
+  image_to_quay:
+    image: quay.io/ukhomeofficedigital/drone-docker
+    secrets:
+      - docker_password
+    environment:
+      - DOCKER_USERNAME=ukhomeofficedigital+egar
+    registry: quay.io
+    repo: quay.io/ukhomeofficedigital/egar-node-8
+    tags:
+      - ${DRONE_BUILD_NUMBER}
+      - latest
+    when:
+      branch: master
+      event: [ push, pull_request]
+
+  tagged_image_to_quay:
+    image: quay.io/ukhomeofficedigital/drone-docker
+    secrets:
+      - docker_password
+    environment:
+      - DOCKER_USERNAME=ukhomeofficedigital+egar
+    registry: quay.io
+    repo: quay.io/ukhomeofficedigital/egar-node-8
+    tags:
+      - ${DRONE_TAG}
+    when:
+      event: tag
