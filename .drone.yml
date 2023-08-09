@@ -32,8 +32,8 @@ steps:
       - n=0; while [ "$n" -lt 60 ] && ! docker stats --no-stream >/dev/null 2>&1; do n=$(( n + 1 )); sleep 1; done
       - echo "echo docker now available."
       - docker login -u="$${DOCKER_USERNAME}" -p="$${DOCKER_PASSWORD}" quay.io
-      - docker build -t egar-python-3:$${DRONE_COMMIT} .
-      - docker tag egar-python-3:$${DRONE_COMMIT} $${DOCKER_REGISTRY_URL}/ukhomeofficedigital/egar-python-3:latest
+      - docker build -t egar-node-8:$${DRONE_COMMIT} .
+      - docker tag egar-node-8:$${DRONE_COMMIT} $${DOCKER_REGISTRY_URL}/ukhomeofficedigital/egar-node-8:latest
       - docker push $${DOCKER_REGISTRY_URL}/ukhomeofficedigital/egar-node-8:latest
       volumes:
         - name: dockersock
@@ -61,7 +61,7 @@ steps:
     pull: always
     failure: ignore
     environment:
-      IMAGE_NAME: quay.io/ukhomeofficedigital/egar-python-3:${DRONE_COMMIT}
+      IMAGE_NAME: quay.io/ukhomeofficedigital/egar-node-8:${DRONE_COMMIT}
       TOLERATE: high
     when:
      event:
