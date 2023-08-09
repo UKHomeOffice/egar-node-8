@@ -15,9 +15,11 @@ steps:
     environment:
       DOCKER_PASSWORD:
         from_secret: DOCKER_PASSWORD
-      DOCKER_USERNAME: ukhomeofficedigital+egar
-      DOCKER_REGISTRY_URL: quay.io
-      IMAGE_NAME: quay.io/ukhomeofficedigital/egar-node-8
+      DOCKER_USERNAME: 
+        from_secret: DOCKER_USERNAME
+      DOCKER_REGISTRY_URL:
+        from_secret: DOCKER_REGISTRY_URL
+      # IMAGE_NAME: quay.io/ukhomeofficedigital/egar-node-8
     # tags:
       # - build-${DRONE_BUILD_NUMBER}
     when:
