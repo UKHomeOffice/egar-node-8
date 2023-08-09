@@ -11,10 +11,10 @@ platform:
 
 steps:
   - name: build_new_image_push_to_quay
-    image: quay.io/ukhomeofficedigital/drone-docker
+    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind:latest
     environment:
       DOCKER_PASSWORD:
-        from_secret: docker_password
+        from_secret: DOCKER_PASSWORD
       DOCKER_USERNAME: ukhomeofficedigital+egar
       DOCKER_REGISTRY_URL: quay.io
       IMAGE_NAME: quay.io/ukhomeofficedigital/egar-node-8
