@@ -15,7 +15,6 @@ steps:
     environment:
       DOCKER_PASSWORD:
         from_secret: DOCKER_PASSWORD
-      INSECURE_SKIP_TLS_VERIFY: true
       DOCKER_USERNAME: ukhomeofficedigital+egar
       DOCKER_REGISTRY_URL: quay.io
       IMAGE_NAME: quay.io/ukhomeofficedigital/egar-node-8
@@ -23,7 +22,8 @@ steps:
       # - build-${DRONE_BUILD_NUMBER}
     when:
       branch:
-        exclude: master
+      - master
+      - feature/*
       event: 
       - push
       - pull_request
